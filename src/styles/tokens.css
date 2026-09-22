@@ -1,0 +1,22 @@
+/**
+ * tokens.css
+ * Variáveis de design usadas em toda a plataforma. Centralizar aqui
+ * facilita trocar o "tema" de um jogo novo sem reescrever CSS espalhado.
+ */
+:root {
+  --color-bg: #ffffff;
+  --color-fg: #000000;
+  --color-fill-bg: #f0f0f0;
+  --color-accent: #1a56db;
+
+  /* 64px segue a recomendação de alvo de toque confortável para crianças
+     pequenas em telas grandes (lousas interativas) — bem acima do mínimo
+     de 44px (WCAG) usado para adultos em celulares. */
+  --touch-target-min: 64px;
+
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  --border-width: 3px;
+  --border-width-strong: 6px;
+}

@@ -1,0 +1,122 @@
+/**
+ * word-image-game.css
+ * Estilos específicos do jogo. O layout genérico (.game-shell,
+ * .top-display, .bottom-controls) vem de src/styles/game-shell.css e é
+ * compartilhado com o jogo de letras de música — aqui só ficam os
+ * detalhes visuais próprios deste jogo (imagem, slots de letra).
+ */
+
+.word-image-frame {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  padding: 8px;
+}
+
+.word-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  /* Nenhum evento de clique/drag na imagem: ela é só ilustrativa,
+     reforçando que a área superior nunca é interativa. */
+  pointer-events: none;
+  user-select: none;
+}
+
+.word-slots {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 12px 8px 4px;
+}
+
+.word-slot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  height: 56px;
+  font-size: 32px;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.word-slot.revealed {
+  color: var(--color-fg);
+}
+
+.word-slot.filled {
+  border: 3px solid var(--color-fg);
+  background: var(--color-fill-bg);
+}
+
+.word-slot.empty {
+  border-bottom: 6px solid var(--color-fg);
+  color: transparent;
+}
+
+.word-slot.separator {
+  min-width: 20px;
+}
+
+.mode-select-title {
+  font-size: 34px;
+  text-align: center;
+  margin: 0 0 8px;
+}
+
+.mode-select-subtitle {
+  text-align: center;
+  font-size: 20px;
+  margin: 0;
+}
+
+.mode-select-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.letter-bank {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  max-height: 32vh;
+  overflow-y: auto;
+}
+
+.letter-key {
+  min-width: var(--touch-target-min);
+  min-height: var(--touch-target-min);
+  font-size: 26px;
+  font-weight: bold;
+  border: 3px solid var(--color-fg);
+  border-radius: 10px;
+  background: var(--color-bg);
+  color: var(--color-fg);
+  cursor: pointer;
+}
+
+.letter-key:active {
+  background: var(--color-fg);
+  color: var(--color-bg);
+}
+
+.letter-key:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Telas estreitas (celular em pé): reduz um pouco o texto para caber. */
+@media (max-width: 600px) {
+  .word-slot { min-width: 34px; height: 44px; font-size: 24px; }
+  .letter-key { min-width: 52px; min-height: 52px; font-size: 20px; }
+  .mode-select-title { font-size: 24px; }
+}

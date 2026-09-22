@@ -1,0 +1,132 @@
+/**
+ * game-shell.css
+ * -----------------------------------------------------------------------
+ * REQUISITO CRÍTICO DE UI/UX (lousa interativa):
+ * Esta é a ÚNICA definição de layout de tela de jogo na plataforma.
+ * TODO jogo novo deve montar sua tela dentro de `.game-shell`, com no
+ * máximo duas regiões filhas:
+ *
+ *   .top-display     -> exclusivamente imagem/texto/letra a ser observada.
+ *                        NUNCA deve conter <button>, <input> ou qualquer
+ *                        elemento clicável.
+ *   .bottom-controls -> TODOS os elementos interativos (botões de
+ *                        resposta, teclado virtual, navegação, inputs).
+ *                        Fica ancorado na base da tela, ao alcance de
+ *                        uma criança em pé em frente a uma lousa digital.
+ *
+ * Reaproveitar esta classe em cada novo jogo (em vez de cada jogo criar
+ * seu próprio layout) é o que garante essa regra de ergonomia de forma
+ * automática em toda a plataforma, sem depender de lembrar a regra a
+ * cada nova tela.
+ * -----------------------------------------------------------------------
+ */
+
+.game-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.top-display {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 15px 20px;
+  overflow-y: auto;
+}
+
+.top-display.centered {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.bottom-controls {
+  flex-shrink: 0;
+  border-top: var(--border-width-strong) solid var(--color-fg);
+  background: var(--color-bg);
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+  padding: 12px 15px;
+  max-height: 55vh;
+  overflow-y: auto;
+  /* Respeita a área segura inferior de tablets com "gesture bar". */
+  padding-bottom: max(12px, env(safe-area-inset-bottom, 0px));
+}
+
+#feedback-msg {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.action-bar {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  border-top: var(--border-width) solid var(--color-fg);
+  padding-top: 10px;
+  margin-top: 4px;
+}
+
+.btn {
+  min-height: var(--touch-target-min);
+  border: var(--border-width) solid var(--color-fg);
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  touch-action: manipulation;
+  flex: 1;
+}
+
+.btn:active {
+  background: var(--color-fg);
+  color: var(--color-bg);
+}
+
+.btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: var(--color-bg);
+  border: var(--border-width-strong) solid var(--color-fg);
+  border-radius: var(--radius-lg);
+  padding: 25px;
+  width: 100%;
+  max-width: 700px;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modal-btn-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.modal-btn-group .btn {
+  min-width: 140px;
+}
