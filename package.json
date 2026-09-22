@@ -4,7 +4,7 @@
   "description": "Plataforma educacional escalável de jogos de alfabetização infantil.",
   "type": "module",
   "engines": {
-    "node": "20.x"
+    "node": "24.x"
   },
   "scripts": {
     "dev": "vite",
