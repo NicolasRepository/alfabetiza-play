@@ -4,7 +4,10 @@
   "outputDirectory": "dist",
   "functions": {
     "api/**/*": {
-      "includeFiles": "db/**",
+      "includeFiles": [
+        "db/**",
+        "api/_lib/**"
+      ],
       "memory": 512,
       "maxDuration": 10
     }
