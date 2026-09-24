@@ -5,7 +5,7 @@
  */
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { eq, or } from "drizzle-orm";
-import { db } from "../../db/client";
+import { db } from "../../db/client.js";
 import { users } from "../../db/schema";
 import { assertMethod, sendJson, withErrorHandling, HttpError } from "../_lib/http";
 import { hashPassword, createSessionToken, setSessionCookie } from "../_lib/auth";
