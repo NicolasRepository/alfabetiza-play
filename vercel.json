@@ -3,11 +3,13 @@
   "buildCommand": "npm run vercel-build",
   "outputDirectory": "dist",
   "functions": {
-    "api/**/*": {
-      "includeFiles": [
-        "db/**",
-        "api/_lib/**"
-      ],
+    "api/**/*.ts": {
+      "includeFiles": "db/**",
+      "memory": 512,
+      "maxDuration": 10
+    },
+    "api/**/*.js": {
+      "includeFiles": "db/**",
       "memory": 512,
       "maxDuration": 10
     }
