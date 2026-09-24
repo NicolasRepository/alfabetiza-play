@@ -4,6 +4,7 @@
   "outputDirectory": "dist",
   "functions": {
     "api/**/*.ts": {
+      "includeFiles": "db/**"
       "memory": 512,
       "maxDuration": 10
     }
