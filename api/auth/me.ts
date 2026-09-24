@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { assertMethod, sendJson, withErrorHandling } from "../_lib/http";
+import { assertMethod, sendJson, withErrorHandling } from "../_lib/http.js";
 import { readOptionalSession } from "../_lib/auth";
 
 export default withErrorHandling(async (req: VercelRequest, res: VercelResponse) => {
